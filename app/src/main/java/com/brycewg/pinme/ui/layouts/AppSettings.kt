@@ -957,6 +957,6 @@ private fun loadAppIconBase64(context: Context): String {
     drawable.setBounds(0, 0, size, size)
     drawable.draw(canvas)
     val stream = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
     return Base64.encodeToString(stream.toByteArray(), Base64.NO_WRAP)
 }

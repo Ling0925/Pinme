@@ -27,6 +27,9 @@ class VllmClient(
         temperature: Double = 0.1,
         maxTokens: Int = 256
     ): String = withContext(Dispatchers.IO) {
+        if (imageBase64.isBlank()) {
+            throw IllegalArgumentException("图片数据为空，无法发送视觉请求")
+        }
         val url = buildChatCompletionsUrl(baseUrl)
         val bodyJson = JSONObject().apply {
             put("model", model)
@@ -57,7 +60,7 @@ class VllmClient(
                                             put(
                                                 "image_url",
                                                 JSONObject().apply {
-                                                    put("url", "data:image/png;base64,$imageBase64")
+                                                    put("url", "data:image/jpeg;base64,$imageBase64")
                                                 }
                                             )
                                         }
@@ -168,6 +171,9 @@ class VllmClient(
         model: String,
         imageBase64: String
     ): String = withContext(Dispatchers.IO) {
+        if (imageBase64.isBlank()) {
+            throw IllegalArgumentException("图片数据为空，无法测试连接")
+        }
         val url = buildChatCompletionsUrl(baseUrl)
         val bodyJson = JSONObject().apply {
             put("model", model)
@@ -194,7 +200,7 @@ class VllmClient(
                                                 JSONObject().apply {
                                                     put(
                                                         "url",
-                                                        "data:image/png;base64,${imageBase64.trim()}"
+                                                        "data:image/jpeg;base64,${imageBase64.trim()}"
                                                     )
                                                 }
                                             )
