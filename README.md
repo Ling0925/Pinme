@@ -25,6 +25,17 @@
 3. 可以将快捷方式发送到桌面,使用快捷小窗触发截图
 4. 可以固定磁贴到控制中心,触发截图
 
+### 使用 LM Studio 本地视觉模型
+
+1. 在 LM Studio 中下载并加载一个支持视觉（Vision）的模型，例如 `llava`、`Qwen2-VL` 等。
+2. 在 LM Studio 顶部菜单启动本地服务器（Local Server），默认监听 `http://localhost:1234`。
+3. 在 PinMe 设置页将供应商切换为 **自定义**：
+   - **Base URL**：填写 `http://<设备局域网IP>:1234/v1`（手机与电脑须在同一 Wi-Fi；若使用模拟器可填 `http://10.0.2.2:1234/v1`）
+   - **模型 ID**：填写 LM Studio 中已加载的视觉模型的确切名称（可在 LM Studio 的模型列表中复制）
+   - **API Key**：LM Studio 本地服务无需 Key，留空即可
+4. 点击「测试连接」按钮，出现"连接成功"则配置正确。
+5. **注意**：请确保所选模型支持视觉输入（Vision），纯文本模型无法处理截图；图片以 JPEG 格式传输。
+
 ## 致谢
 
 - 感谢 [StarSchedule](https://github.com/lightStarrr/starSchedule) 提供的 Flyme 实况通知调用参考。
