@@ -28,7 +28,7 @@ class VllmClient(
         maxTokens: Int = 256
     ): String = withContext(Dispatchers.IO) {
         if (imageBase64.isBlank()) {
-            throw IllegalArgumentException("图片数据为空，无法发送视觉请求")
+            throw IllegalArgumentException("图片数据为空,无法发送视觉请求")
         }
         val url = buildChatCompletionsUrl(baseUrl)
         val bodyJson = JSONObject().apply {
@@ -172,7 +172,7 @@ class VllmClient(
         imageBase64: String
     ): String = withContext(Dispatchers.IO) {
         if (imageBase64.isBlank()) {
-            throw IllegalArgumentException("图片数据为空，无法测试连接")
+            throw IllegalArgumentException("图片数据为空,无法测试连接")
         }
         val url = buildChatCompletionsUrl(baseUrl)
         val bodyJson = JSONObject().apply {
